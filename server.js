@@ -1,7 +1,15 @@
 const express = require('express');
 const app = express();
+const path = require('path');
+app.use(express.static(path.join(__dirname, '/app/public')));
+let employees = require('./app/data/employees.js');
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 require('./app/routing/htmlRoutes.js')(app);
-require('./app/routing/apiRoutes')(app);
+require('./app/routing/apiRoutes.js')(app, employees);
+
 
 
 const PORT = 8080;
