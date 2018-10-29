@@ -12,7 +12,7 @@ require('./app/routing/apiRoutes.js')(app, employees);
 
 
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, function(){
     console.log ('app listening on port ' + PORT);
